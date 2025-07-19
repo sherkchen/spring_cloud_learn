@@ -1,0 +1,19 @@
+#自定义端口号
+server:
+  port: 7100
+#自定义服务注册名
+spring:
+  application:
+    name: FIRST-PROVIDER
+#设定一些注册进eureka的配置
+eureka:
+  #设定实例
+  instance:
+    #设定续约响应时间，未设定默认30s
+    lease-renewal-interval-in-seconds: 30
+    #设定续约到期时间，未设定默认90s
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      #将服务注册至eureka来进行管理
+      defaultZone: http://root:root@localhost:5010/eureka/
