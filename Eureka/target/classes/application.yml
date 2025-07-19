@@ -1,0 +1,23 @@
+#因为SpringBoot自带TomCat服务器所以需要自定义端口号，目的是为了接下来的启动项目端口配置
+server:
+  port: 5010
+#Eureka配置
+eureka:
+  instance:
+    hostname: localhost #将Eureka服务端口配置在本机
+  client:
+    register-with-eureka: false #禁止自己当作服务注册自己
+    fetch-registry: false #屏蔽当前注册信息
+    serviceUrl: #当前eureka服务地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enable-self-preservation: true #开启自我保护机制，保护不可用服务被删除
+#Spring配置
+spring:
+  application:
+    name: EUREKA-ONE #设定当前服务应用程序名称
+  #安全机制配置
+  security:
+    user:
+      name: root #登录账户
+      password: root #登录密码
