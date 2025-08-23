@@ -13,11 +13,11 @@ public class ProviderController {
     //方式一
     @RequestMapping(value = "/firstProviderA_one",method = RequestMethod.GET)
     public String providerOne(){
-        return "this is first providerA one !";
+        return "this is first providerB one !";
     }
     //方式二
     @GetMapping("/firstProviderA_two")
     public String providerTwo(){
-        return "this is first providerA  two!";
+        return "this is first providerB  two!";
     }
 }

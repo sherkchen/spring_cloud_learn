@@ -19,6 +19,58 @@ OpenFeign
 
 参考： https://cloud.tencent.com/developer/article/2407573
 
+## day 2 
+### 补充架构图
+```mermaid
+graph TB
+    subgraph 微服务架构
+        subgraph 服务注册中心
+            Eureka[Eureka Server]
+        end
+
+        subgraph 服务提供者
+            ProviderA[ProviderA Service]
+            ProviderB[ProviderB Service]
+        end
+
+        subgraph 服务消费者
+            ConsumerA[ConsumerA Service]
+        end
+    end
+
+    %% 服务注册
+    ProviderA -->|注册服务| Eureka
+    ProviderB -->|注册服务| Eureka
+    ConsumerA -->|注册服务| Eureka
+
+    %% 服务调用
+    ConsumerA -->|发现服务| Eureka
+    ConsumerA -->|调用| ProviderA
+    ConsumerA -->|调用| ProviderB
+
+    style Eureka fill:#FFE4C4,stroke:#333
+    style ProviderA fill:#87CEEB,stroke:#333
+    style ProviderB fill:#87CEEB,stroke:#333
+    style ConsumerA fill:#98FB98,stroke:#333
+    
+    classDef service fill:#87CEEB,stroke:#333;
+    classDef consumer fill:#98FB98,stroke:#333;
+    classDef registry fill:#FFE4C4,stroke:#333;
+    
+    class ProviderA,ProviderB service
+    class ConsumerA consumer
+    class Eureka registry
+    
+```
+  ```mermaid
+    flowchart LR
+      A["JS"]
+      B["Mermaid"]
+      C["Markdown 原生"]
+      D["Markdown 定制"]
+      A --制作了--> B --内嵌到了 --> C --衍生了--> D
+  ```
+
 
 
 ##  PS
